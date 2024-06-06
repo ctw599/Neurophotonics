@@ -1,8 +1,8 @@
 % Compute FFT of the first channel
-data =  load('FN_032_V1_Postdose1_Nback.mat');
-intensityData = data.d;
-
-firstChannel = intensityData(:, 1);
+% data =  load('FN_032_V1_Postdose1_Nback.mat');
+% intensityData = data.d;
+% 
+% firstChannel = intensityData(:, 1);
 n = length(firstChannel);
 % Sampling frequency
 fs = 1 / (timeVector(2) - timeVector(1)); 
@@ -11,13 +11,9 @@ y = fft(firstChannel) / n;
 % Frequency vector
 f = (0:n-1) * (fs / n); 
 
-% Only consider frequencies up to the Nyquist frequency
-f = f(1:floor(n/2));
-y = y(1:floor(n/2));
-
 % Plot the Fourier transform
 figure;
-semilogy(f, abs(y));
+plot(f, abs(y)*2);
 xlabel('Frequency (Hz)');
 ylabel('Magnitude');
 xlim([0.5 4])
@@ -25,7 +21,8 @@ title('Fourier Transform of the First Channel');
 
 % Approximate pulse frequency range in Hz (1-2 Hz)
 pulseFreqRange = [1, 2]; 
-% Frequencies from 2.5 Hz to the Nyquist frequency
+% Frequencies from 2.5 Hz to the max for the noise calculation as asked in
+% the hw problem
 noiseFreqRange = [2.5, max(f)]; 
 
 % Find the index of the pulse frequency range
