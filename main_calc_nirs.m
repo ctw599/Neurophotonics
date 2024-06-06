@@ -1,3 +1,5 @@
+% Declaring all of the variables - using the paths from my specific
+% computer
 main_data_file = "C:\Users\user\Downloads\HW1_data\FN_032_V1_Postdose1_Nback.mat";
 SDS_cm = 3;
 tissue_type = 'adult_forearm';
