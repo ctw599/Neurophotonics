@@ -16,7 +16,7 @@
     % dHbO - HbO concentration change for all channels (nx20) where n is time vector length
     % fig - handle to figure. Empty if plotChannelIdx==[]
 
-function [dHbR, dHbO, fig] = CalcNIRS(dataFile, SDS, tissueType, extinctionCoefficientsFile, DPFperTissueFile, relDPFfile, plotChannelIdx)
+function [dHbR, dHbO, fig] = CalcNIRS(dataFile, SDS, tissueType, plotChannelIdx, extinctionCoefficientsFile, DPFperTissueFile, relDPFfile)
     if isfile(dataFile) && isfile(extinctionCoefficientsFile) && isfile(DPFperTissueFile) && isfile(relDPFfile) && isa(SDS, 'double') && isa(tissueType, 'char')
         if nargin < 7
             plotChannelIdx = [];
